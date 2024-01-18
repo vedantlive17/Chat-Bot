@@ -51,10 +51,28 @@ function updateChatBox() {
   let messages = JSON.parse(localStorage.getItem("chatMessages")) || [];
 
   chatBox.innerHTML = "";
-  messages.forEach((msg) => {
-    let msgHtml = `<div class="${msg.sender}-message">${msg.message}</div>`;
+  messages.forEach((msg, index) => {
+    let msgHtml = `
+      <div class="message-container">
+        <div class="${msg.sender}-message">${escapeHTML(msg.message)}</div>
+        ${msg.sender === 'user' ? `<img src="./images/remove.png" class="delete-btn" onclick="deleteMessage(${index})" />` : ''}
+      </div>`;
     chatBox.innerHTML += msgHtml;
   });
+}
+
+function deleteMessage(index) {
+  let messages = JSON.parse(localStorage.getItem("chatMessages")) || [];
+  messages.splice(index, 2);
+  localStorage.setItem("chatMessages", JSON.stringify(messages));
+  updateChatBox();
+}
+
+function escapeHTML(html) {
+  var text = document.createTextNode(html);
+  var p = document.createElement('p');
+  p.appendChild(text);
+  return p.innerHTML;
 }
 
 document.addEventListener("DOMContentLoaded", updateChatBox);
@@ -77,4 +95,3 @@ function autoExpandTextarea() {
 }
 
 document.addEventListener('DOMContentLoaded', autoExpandTextarea);
-

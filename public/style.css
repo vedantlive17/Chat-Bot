@@ -21,6 +21,24 @@ body {
     overflow-y: auto; 
 }
 
+pre {
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    border-left: 3px solid #f36d33;
+    color: #666;
+    page-break-inside: avoid;
+    font-family: monospace;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 1.6em;
+    max-width: 100%;
+    overflow: auto;
+    display: block;
+    padding: 1em 1.5em;
+    word-wrap: break-word;
+  }
+  
+
 #chatBox {
     width: 100%;
     overflow-wrap: break-word;
@@ -34,16 +52,19 @@ body {
 .user-message, .gpt-message {
     padding: 10px;
     margin: 10px 0;
+    font-family: "Kanit", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .user-message {
-    background-color: #ffffff6b; 
-    color: white;
+    background-color: #ffffff59; 
+    color: #f2a65a; 
 }
 
 .gpt-message {
-    background-color: #ffffff0c;
-    color: white;
+    background-color: #ffffff12; 
+    color: #b185db;; 
   
 }
 
@@ -137,6 +158,27 @@ body {
   transition: 0.5s ease-in-out;
 }
 
+.message-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .message-container button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .message-container button:hover {
+    background-color: #d32f2f;
+  }
+
+  
 .spinner-container {
     display: flex;
     justify-content: center;
